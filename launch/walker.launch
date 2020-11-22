@@ -13,6 +13,8 @@
         pkg="rosbag"
         name="record"
         type="record"
+        espawn="true" 
+        output="screen"
         args="-a -x /camera/(.*) -O $(find turtlebot_walker)/results/walkertopics.bag"
         if="$(arg rosbagEnable)"
     />
