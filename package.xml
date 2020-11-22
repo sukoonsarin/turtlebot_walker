@@ -1,7 +1,6 @@
-
 <?xml version="1.0"?>
 <package format="2">
-  <name>turtlebotWalker</name>
+  <name>turtlebot_walker</name>
   <version>0.1.0</version>
   <description>The Turtlebot_Walker package</description>
 
