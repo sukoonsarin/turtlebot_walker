@@ -22,15 +22,16 @@ To install turtlebot3 ROS package as a binary package on your system, open your 
 sudo apt-get install ros-melodic-turtlebot3-*
 ```
 Next for running Turtlebot3 simulation, you have to specify the model name of TurtleBot3.
+
 Add the following command to the end of bashrc file:
 ```
 export TURTLEBOT3_MODEL=burger
 ```
-To install Gazebo
-```
-curl -sSL http://get.gazebosim.org | sh
-gazebo
-```
+**To install Gazebo**
+
+    curl -sSL http://get.gazebosim.org | sh
+    gazebo
+
 
 ## Standard install via command-line
 ```
@@ -74,16 +75,18 @@ rosbag info walkertopics.bag
 ```
 
 ## Playing the rosbag file
-1. Terminal 1 (run master node):
-```
-roscore
-```
+**1. Terminal 1:**
+run master node
 
-2. Terminal 2 (play rosbag):
-```
-cd <<Your_catkin_workspace>>
-source devel/setup.bash
-cd src/turtlebot_walker/Results/
-rosbag play walkertopics.bag
-```
+    roscore
+
+
+**2. Terminal 2:**
+play rosbag
+
+    cd <<Your_catkin_workspace>>
+    source devel/setup.bash
+    cd src/turtlebot_walker/Results/
+    rosbag play walkertopics.bag
+
 Note: During rosbag playback, Gazebo should'nt be running.
