@@ -39,49 +39,53 @@
 #ifndef INCLUDE_OBSTACLEDETECTOR_HPP_
 #define INCLUDE_OBSTACLEDETECTOR_HPP_
 
+#include <std_msgs/String.h>
 #include<iostream>
 #include "ros/ros.h"
-#include "geometry_msgs/Twist.h"
 #include "sensor_msgs/LaserScan.h"
+#include "geometry_msgs/Twist.h"
 
-/*
- * @brief Class ObstacleDetector
+
+/**
+ * @brief Class ObstacleDetector 
  *        To detect presence of obstacles nearby
- */
-
+ * **/
 class ObstacleDetector {
  private:
-  bool obstacleFlag;
+  double distance;
 
  public:
-  /*
+  /**
    * @brief Constructor for class
-   *        Initializes value of obstacle flag
+   *        Initializes value of distance
    * @param none
    * @return void
-   */
+   * **/
   ObstacleDetector();
 
-  /* @brief destructor for class ObstacleDetector
+  /**
+   * @brief destructor for class ObstacleDetector
    *        To destroy the object
    * @param none
    * @return void
-   */
+   * **/
   ~ObstacleDetector();
 
-  /* @brief function obstacleScanner
+  /** 
+   * @brief function obstacleScanner
    *        To detect presence of obstacles nearby using laserscan
    * @param msg of type sensor_msgs::LaserScan
    * @return void
-   */
+   * **/
   void obstacleScanner(const sensor_msgs::LaserScan::ConstPtr& msg);
 
-  /* @brief function detector
-   *        To fetch value of obstacleFlag
+  /** 
+   * @brief function detector
+   *        To fetch value of distance
    * @param none
-   * @return void
-   */
-  bool detector();
+   * @return double
+   * **/
+  double detector();
 };
 
 #endif  // INCLUDE_OBSTACLEDETECTOR_HPP_

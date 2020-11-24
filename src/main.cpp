@@ -33,24 +33,23 @@
  * @file main.cpp
  * @author Sukoon Sarin
  * @copyright 2020 BSD
- * @brief main function to implement Turtlebot_walker packages
+ * @brief main function to implement turtlebot_walker packages
  */
 
 #include <ros/ros.h>
 #include "ObstacleDetector.hpp"
 #include "Walker.hpp"
 
-/*
+/**
  * @brief main function
  * @param argc int
  * @param argv char array
- * @return void
+ * @return int
  */
 
 int main(int argc, char* argv[]) {
   ros::init(argc, argv, "walker");
-
-  Walker roomba;
-  roomba.navigation();
+  ros::NodeHandle nh;
+  Walker walker(nh);
   return 0;
 }

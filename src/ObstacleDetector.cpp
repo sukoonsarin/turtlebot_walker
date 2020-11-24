@@ -41,7 +41,7 @@
 #include "ObstacleDetector.hpp"
 
 ObstacleDetector::ObstacleDetector() {
-  obstacleFlag = false;
+  distance = 0.0;
 }
 
 ObstacleDetector::~ObstacleDetector() {
@@ -49,17 +49,11 @@ ObstacleDetector::~ObstacleDetector() {
 
 void ObstacleDetector::obstacleScanner(
     const sensor_msgs::LaserScan::ConstPtr& msg) {
-  for (int i = 0; i < msg->ranges.size(); i++) {
-    // check for obstacle
-    if (msg->ranges[i] < 1) {
-      obstacleFlag = true;
-      return;
-    }
-  }
-  obstacleFlag = false;
+  distance = msg->ranges[180];
+  ROS_INFO_STREAM("Distance to obstacle: " << distance);
 }
 
-bool ObstacleDetector::detector() {
-  return obstacleFlag;
+double ObstacleDetector::detector() {
+  return distance;
 }
 

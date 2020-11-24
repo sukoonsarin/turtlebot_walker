@@ -40,47 +40,35 @@
 #include <iostream>
 #include "Walker.hpp"
 
-Walker::Walker() {
+Walker::Walker(ros::NodeHandle nh) {
+  // ROS publisher to velocity topic
   velocity = nh.advertise <geometry_msgs::Twist>
-  ("/mobile_base/commands/velocity", 500);
-  depth = nh.subscribe < sensor_msgs::LaserScan
-      > ("/scan", 50, &ObstacleDetector::obstacleScanner, &obstacle);
+  ("/cmd_vel", 1);
+  // ROS subscriber to LaserScan
+  depth = nh.subscribe("/scan", 1000,
+          &ObstacleDetector::obstacleScanner, &obstacle);
 
-  msg.linear.x = 0.0;
-  msg.linear.y = 0.0;
-  msg.linear.z = 0.0;
-  msg.angular.x = 0.0;
-  msg.angular.y = 0.0;
-  msg.angular.z = 0.0;
-  // publish velocities for turtlebot
-  velocity.publish(msg);
-}
+  // velocity.publish(msg);
 
-Walker::~Walker() {
-  msg.linear.x = 0.0;
-  msg.linear.y = 0.0;
-  msg.linear.z = 0.0;
-  msg.angular.x = 0.0;
-  msg.angular.y = 0.0;
-  msg.angular.z = 0.0;
-
-  velocity.publish(msg);
-}
-
-void Walker::navigation() {
   // set loop rate
-  ros::Rate loop_rate(10);
+  ros::Rate loop_rate(4);
+
   while (ros::ok()) {
+    // Initialize linear and angular velocities to zeros
+    msg.linear.x = 0.0;
+    msg.linear.y = 0.0;
+    msg.linear.z = 0.0;
+    msg.angular.x = 0.0;
+    msg.angular.y = 0.0;
+    msg.angular.z = 0.0;
+
     // check if obstacle is close
-    if (obstacle.detector()) {
-      // stop linear motion
-      msg.linear.x = 0.0;
-      // turn around z axis
-      msg.angular.z = 1.0;
+    if (obstacle.detector() > 0.45) {
+      ROS_INFO_STREAM("Forward");
+      msg.linear.x = -0.12;
     } else {
-      // go forward if no obstacle
-      msg.linear.x = 0.2;
-      msg.angular.z = 0.0;
+        ROS_INFO_STREAM("Turn");
+        msg.angular.z = 1.5;
     }
     velocity.publish(msg);
     ros::spinOnce();
