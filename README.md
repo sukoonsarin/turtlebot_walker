@@ -5,7 +5,7 @@
 
 The turtlebot_walker package implements a walker algorithm for the Turtlebot 3 in Gazebo. This ROS package is a simple turtlebot navigator that detects obstacles and avoids them by rotating and moving forward, just like the Roomba Robot!
 <p align="center">
- <img src="https://github.com/sukoonsarin/turtlebot_walker/blob/Week12_HW/Results/Simulation.gif">
+ <img src="https://github.com/sukoonsarin/turtlebot_walker/blob/main/Results/Simulation.gif">
 </p>
 
 ## Dependencies
