@@ -14,7 +14,7 @@
         name="record"
         type="record"
         output="screen"
-        args="-a -x /camera/(.*) -O $(find turtlebot_walker)/results/walkertopics.bag"
+        args="-a -x /camera/(.*) -O $(find turtlebot_walker)/Results/walkertopics.bag"
         if="$(arg rosbagEnable)"
     />
 
