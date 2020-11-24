@@ -49,13 +49,12 @@ Open the following terminals and run the following commands in them:
     source devel/setup.bash
     roslaunch turtlebot_walker walker.launch 
 
-
-2. Terminal 2:
+**2. Terminal 2:**
 
 After running the Publisher/Subscriber node,we can view the full list of topics that are currently being published in the running system by running this in a new terminal:
-```
-rostopic list -v
-```
+
+    rostopic list -v
+
 Press Ctrl+C in terminal 1 to terminate Gazebo simulation.
 
 ## Recording rosbag file
