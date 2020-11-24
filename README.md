@@ -43,14 +43,15 @@ source devel/setup.bash
 ## Running Simulation
 Open the following terminals and run the following commands in them:
 
-1. Terminal 1:
-```
-cd <<Your_catkin_workspace>>
-source devel/setup.bash
-roslaunch turtlebot_walker walker.launch 
-```
+**1. Terminal 1:**
+
+    cd <<Your_catkin_workspace>>
+    source devel/setup.bash
+    roslaunch turtlebot_walker walker.launch 
+
 
 2. Terminal 2:
+
 After running the Publisher/Subscriber node,we can view the full list of topics that are currently being published in the running system by running this in a new terminal:
 ```
 rostopic list -v
